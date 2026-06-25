@@ -129,10 +129,15 @@ tr.zero-row td.danger-cell { color: var(--danger); font-weight: 800; }
 .office-tab:hover { border-color: var(--accent); color: var(--accent); }
 .office-tab.active { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; border-color: transparent; font-weight: 700; box-shadow: 0 4px 12px rgba(91, 110, 245, 0.3); }
 
-.manager-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.manager-filter,
+.status-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; align-items: center; }
+.filter-label { font-size: 12.5px; color: var(--muted); font-weight: 600; margin-right: 4px; letter-spacing: 0.3px; }
 .chip { padding: 7px 15px; border: 1px solid var(--border); border-radius: 999px; background: #fff; cursor: pointer; font-size: 13.5px; font-weight: 500; transition: all 0.15s; }
 .chip:hover { border-color: var(--accent); }
 .chip.active { background: #1c2231; color: #fff; border-color: #1c2231; font-weight: 600; }
+.chip.status-paid.active    { background: var(--ok);     border-color: var(--ok);     color: #fff; }
+.chip.status-written.active { background: #b08300;       border-color: #b08300;       color: #fff; }
+.chip.status-need.active    { background: var(--danger); border-color: var(--danger); color: #fff; }
 
 .pill { display: inline-block; padding: 4px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 700; }
 .pill-paid { background: #e7f4ec; color: var(--ok); }
@@ -142,7 +147,6 @@ tr.zero-row td.danger-cell { color: var(--danger); font-weight: 800; }
 .pill-jeungrye { background: #d8eedd; color: #1f6b3a; }
 
 .hidden { display: none !important; }
-.spacer { height: 12px; }
 
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
@@ -177,10 +181,18 @@ const DATA = {"generatedAt": "26년 6월 25일 09시 35분 기준", "mktTool": {
 const fmt = (n) => Number(n||0).toLocaleString('ko-KR');
 const pct = (r) => (r*100).toFixed(1) + '%';
 
+const STATUS_OPTIONS = ['전체', '지급완료', '작성완료', '작성필요'];
+const STATUS_CHIP_CLASS = {
+  '지급완료': 'status-paid',
+  '작성완료': 'status-written',
+  '작성필요': 'status-need',
+};
+
 const state = {
   activeSection: 'mkt-overview',
   selectedOffice: null,
   selectedManager: '전체',
+  selectedStatus: '전체',
 };
 
 function banner(title, subtitle) {
@@ -258,6 +270,7 @@ function renderMktOverview() {
   </div>`;
 }
 
+// 요약은 사무소+담당자 기준으로만 계산 (상태 필터의 영향 X)
 function calcOfficeSummary(officeName, managerFilter) {
   const info = DATA.mktTool.officeData[officeName];
   if (!info) return {jamun:{신청:0,작성완료:0,지급완료:0,작성필요:0}, jeungrye:{신청:0,작성완료:0,지급완료:0,작성필요:0}};
@@ -280,10 +293,17 @@ function renderMktDetail() {
   const info = DATA.mktTool.officeData[cur];
   const managers = ['전체', ...info.managers];
   if (!managers.includes(state.selectedManager)) state.selectedManager = '전체';
+  if (!STATUS_OPTIONS.includes(state.selectedStatus)) state.selectedStatus = '전체';
 
   const tabs = offices.map(o => `<div class="office-tab ${o===cur?'active':''}" data-office-tab="${o}">${o}</div>`).join('');
   const chips = managers.map(m => `<div class="chip ${m===state.selectedManager?'active':''}" data-manager="${m}">${m}</div>`).join('');
+  const statusChips = STATUS_OPTIONS.map(s => {
+    const variant = STATUS_CHIP_CLASS[s] || '';
+    const active = s === state.selectedStatus ? 'active' : '';
+    return `<div class="chip ${variant} ${active}" data-status="${s}">${s}</div>`;
+  }).join('');
 
+  // 요약: 상태 필터 영향 X
   const sum = calcOfficeSummary(cur, state.selectedManager);
   const subCard = (label, val, variant) => `<div class="sub-card ${variant||''}"><div class="label">${label}</div><div class="value">${fmt(val)}</div></div>`;
   const groupCard = (title, m) => `
@@ -297,8 +317,10 @@ function renderMktDetail() {
       </div>
     </div>`;
 
-  // 거래처 리스트
-  const filtered = info.rows.filter(r => state.selectedManager === '전체' || r.manager === state.selectedManager);
+  // 거래처 리스트: 담당자 + 상태 AND 필터
+  const filtered = info.rows
+    .filter(r => state.selectedManager === '전체' || r.manager === state.selectedManager)
+    .filter(r => state.selectedStatus === '전체' || r.status === state.selectedStatus);
   filtered.sort((a,b) => a.manager.localeCompare(b.manager,'ko') || a.hospital.localeCompare(b.hospital,'ko'));
   const statusPill = (s) => {
     if (s === '지급완료') return '<span class="pill pill-paid">지급완료</span>';
@@ -316,16 +338,21 @@ function renderMktDetail() {
       <td>${r.payDate||'-'}</td>
     </tr>`).join('');
 
+  const subtitleParts = [cur, state.selectedManager];
+  if (state.selectedStatus !== '전체') subtitleParts.push(state.selectedStatus);
+  const subtitle = subtitleParts.join(' · ');
+
   return `
-  ${banner('사무소 세부현황', `${cur} · ${state.selectedManager}`)}
+  ${banner('사무소 세부현황', subtitle)}
   <div class="office-tabs">${tabs}</div>
   <div class="group-grid">
     ${groupCard('자문', sum.jamun)}
     ${groupCard('증례', sum.jeungrye)}
   </div>
   <h3 class="section-title">담당자 필터</h3>
-  <div class="manager-filter">${chips}</div>
-  <h3 class="section-title">거래처 리스트 <span class="section-count">(${filtered.length}건)</span></h3>
+  <div class="manager-filter"><span class="filter-label">담당자</span>${chips}</div>
+  <div class="status-filter"><span class="filter-label">상태</span>${statusChips}</div>
+  <h3 class="section-title">거래처 리스트 <span class="section-count">(${filtered.length}건${state.selectedStatus!=='전체'?` · ${state.selectedStatus} 필터 적용`:''})</span></h3>
   <div class="table-wrap">
     <table>
       <thead>
@@ -338,7 +365,7 @@ function renderMktDetail() {
           <th>지급일</th>
         </tr>
       </thead>
-      <tbody>${rows||'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:30px">데이터 없음</td></tr>'}</tbody>
+      <tbody>${rows||'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:30px">조건에 해당하는 데이터가 없습니다</td></tr>'}</tbody>
     </table>
   </div>`;
 }
@@ -429,12 +456,12 @@ function render() {
   else if (state.activeSection === 'mkt-detail') main.innerHTML = renderMktDetail();
   else if (state.activeSection === 'pro-overview') main.innerHTML = renderProOverview();
 
-  // Event bindings
   if (state.activeSection === 'mkt-overview') {
     document.querySelectorAll('tr[data-office]').forEach(tr => {
       tr.addEventListener('click', () => {
         state.selectedOffice = tr.dataset.office;
         state.selectedManager = '전체';
+        state.selectedStatus = '전체';
         state.activeSection = 'mkt-detail';
         render();
         window.scrollTo({top:0, behavior:'smooth'});
@@ -446,12 +473,20 @@ function render() {
       el.addEventListener('click', () => {
         state.selectedOffice = el.dataset.officeTab;
         state.selectedManager = '전체';
+        state.selectedStatus = '전체';  // 사무소 변경 시 상태 필터 리셋
         render();
       });
     });
     document.querySelectorAll('[data-manager]').forEach(el => {
       el.addEventListener('click', () => {
         state.selectedManager = el.dataset.manager;
+        // 담당자 변경 시 상태 필터는 유지
+        render();
+      });
+    });
+    document.querySelectorAll('[data-status]').forEach(el => {
+      el.addEventListener('click', () => {
+        state.selectedStatus = el.dataset.status;
         render();
       });
     });
