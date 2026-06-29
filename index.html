@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="ko">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>서울3사업부 통합 현황판</title>
 <style>
 :root {
@@ -56,14 +56,17 @@ aside h1 { font-size: 15px; font-weight: 700; margin: 4px 6px 28px; color: #fff;
   background: #ffffff; color: #1f2330; font-weight: 700;
   box-shadow: 0 4px 12px rgba(0,0,0,0.18);
 }
-main { padding: 28px 32px; }
+main { padding: 28px 32px 60px; min-width: 0; }
+
 .page-banner {
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 55%, #a855f7 100%);
   color: #fff; border-radius: 16px; padding: 22px 26px;
   margin-bottom: 22px; box-shadow: var(--shadow-banner);
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
-.page-banner .banner-left { display: flex; align-items: baseline; flex-wrap: wrap; gap: 14px; }
+.page-banner .banner-left {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: 14px;
+}
 .page-banner h2 { margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.2px; }
 .page-banner .gen-time {
   font-size: 13.5px; color: rgba(255,255,255,0.92); font-weight: 500;
@@ -80,63 +83,110 @@ main { padding: 28px 32px; }
   background: var(--panel); border-radius: 16px; padding: 22px 22px 20px;
   box-shadow: var(--shadow-card); border: 1px solid var(--border-soft);
 }
-.group-card h3 { margin: 0 0 18px; font-size: 18px; font-weight: 700; display: flex; align-items: center; gap: 10px; }
+.group-card h3 {
+  margin: 0 0 18px; font-size: 18px; font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+}
 .group-card h3::before {
   content: ""; width: 4px; height: 16px; border-radius: 2px;
   background: linear-gradient(180deg, var(--accent), var(--accent-2));
 }
 .sub-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-.sub-card { background: var(--panel-soft); border: 1px solid var(--border); border-radius: 12px; padding: 14px 12px; text-align: center; }
+.sub-card {
+  background: var(--panel-soft); border: 1px solid var(--border);
+  border-radius: 12px; padding: 14px 12px; text-align: center;
+}
 .sub-card .label { font-size: 13.5px; color: var(--muted); font-weight: 600; margin-bottom: 8px; }
-.sub-card .value { font-size: 34px; font-weight: 800; color: var(--text); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.sub-card .value {
+  font-size: 34px; font-weight: 800; color: var(--text);
+  line-height: 1.1; font-variant-numeric: tabular-nums;
+}
 .sub-card.danger .value { color: var(--danger); }
 .sub-card.accent .value {
   background: linear-gradient(135deg, var(--accent), var(--accent-2));
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 
-.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; margin-bottom: 22px; }
-.kpi-card { background: var(--panel); border: 1px solid var(--border-soft); border-radius: 14px; padding: 18px 18px 16px; box-shadow: var(--shadow-card); }
+.kpi-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px; margin-bottom: 22px;
+}
+.kpi-card {
+  background: var(--panel); border: 1px solid var(--border-soft);
+  border-radius: 14px; padding: 18px 18px 16px; box-shadow: var(--shadow-card);
+}
 .kpi-card .label { font-size: 13.5px; color: var(--muted); font-weight: 600; margin-bottom: 10px; }
 .kpi-card .value-row { display: flex; align-items: baseline; gap: 6px; }
-.kpi-card .value { font-size: 34px; font-weight: 800; color: var(--text); line-height: 1; font-variant-numeric: tabular-nums; }
-.kpi-card.accent .value { background: linear-gradient(135deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.kpi-card .value {
+  font-size: 34px; font-weight: 800; color: var(--text);
+  line-height: 1; font-variant-numeric: tabular-nums;
+}
+.kpi-card.accent .value {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
 .kpi-card.danger .value { color: var(--danger); }
 .kpi-card .unit { font-size: 14.5px; color: var(--muted); font-weight: 600; }
 
-h3.section-title { font-size: 17px; margin: 28px 0 14px; color: var(--text); font-weight: 700; display: flex; align-items: center; gap: 10px; }
-h3.section-title::before { content: ""; width: 4px; height: 18px; border-radius: 2px; background: linear-gradient(180deg, var(--accent), var(--accent-2)); }
-.section-count { font-size: 14px; color: var(--muted); font-weight: 600; margin-left: 4px; }
+h3.section-title {
+  font-size: 17px; margin: 28px 0 14px; color: var(--text); font-weight: 700;
+  display: flex; align-items: center; gap: 10px;
+}
+h3.section-title::before {
+  content: ""; width: 4px; height: 18px; border-radius: 2px;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+}
+.section-title-count { font-size: 13.5px; color: var(--muted); font-weight: 600; margin-left: 6px; }
 
-.table-wrap { background: var(--panel); border: 1px solid var(--border-soft); border-radius: 14px; box-shadow: var(--shadow-card); overflow: auto; margin-bottom: 22px; }
+.table-wrap {
+  background: var(--panel); border: 1px solid var(--border-soft);
+  border-radius: 14px; box-shadow: var(--shadow-card);
+  overflow: auto; margin-bottom: 22px;
+}
 table { width: 100%; border-collapse: collapse; font-size: 15px; }
 th, td { padding: 13px 16px; border-bottom: 1px solid var(--border-soft); text-align: left; white-space: nowrap; }
-th { background: var(--panel-soft); font-weight: 700; color: var(--text-soft); font-size: 14px; letter-spacing: 0.2px; position: sticky; top: 0; z-index: 1; }
+th {
+  background: var(--panel-soft); font-weight: 700; color: var(--text-soft);
+  font-size: 14px; letter-spacing: 0.2px;
+  position: sticky; top: 0; z-index: 1;
+}
 tbody tr:last-child td { border-bottom: none; }
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 td.center, th.center { text-align: center; font-variant-numeric: tabular-nums; }
 tbody td.center { font-weight: 600; }
 tr.clickable { cursor: pointer; }
 tr.clickable:hover td { background: #f7f9ff; }
-.group-jamun-bg { background: #eef0ff !important; color: #3b3f8a; }
-.group-jeungrye-bg { background: #eafaf0 !important; color: #1f6b3a; }
+.group-jamun-bg { background: #eef0ff; color: #3b3f8a; }
+.group-jeungrye-bg { background: #eafaf0; color: #1f6b3a; }
 
 tr.zero-row td { background: var(--danger-bg) !important; }
 tr.zero-row td.danger-cell { color: var(--danger); font-weight: 800; }
 
 .office-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 18px; }
-.office-tab { padding: 9px 18px; border: 1px solid var(--border); border-radius: 999px; background: #fff; cursor: pointer; font-size: 14.5px; font-weight: 600; transition: all 0.15s; }
+.office-tab {
+  padding: 9px 18px; border: 1px solid var(--border); border-radius: 999px;
+  background: #fff; cursor: pointer; font-size: 14.5px; font-weight: 600; transition: all 0.15s;
+}
 .office-tab:hover { border-color: var(--accent); color: var(--accent); }
-.office-tab.active { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; border-color: transparent; font-weight: 700; box-shadow: 0 4px 12px rgba(91, 110, 245, 0.3); }
+.office-tab.active {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff; border-color: transparent; font-weight: 700;
+  box-shadow: 0 4px 12px rgba(91, 110, 245, 0.3);
+}
 
-.manager-filter,
-.status-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; align-items: center; }
-.filter-label { font-size: 12.5px; color: var(--muted); font-weight: 600; margin-right: 4px; letter-spacing: 0.3px; }
-.chip { padding: 7px 15px; border: 1px solid var(--border); border-radius: 999px; background: #fff; cursor: pointer; font-size: 13.5px; font-weight: 500; transition: all 0.15s; }
+.manager-filter, .status-filter { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; align-items: center; }
+.filter-label {
+  font-size: 12.5px; color: var(--muted); font-weight: 600;
+  margin-right: 4px; letter-spacing: 0.3px;
+}
+.chip {
+  padding: 7px 15px; border: 1px solid var(--border); border-radius: 999px;
+  background: #fff; cursor: pointer; font-size: 13.5px; font-weight: 500; transition: all 0.15s;
+}
 .chip:hover { border-color: var(--accent); }
 .chip.active { background: #1c2231; color: #fff; border-color: #1c2231; font-weight: 600; }
 .chip.status-paid.active    { background: var(--ok);     border-color: var(--ok);     color: #fff; }
-.chip.status-written.active { background: #b08300;       border-color: #b08300;       color: #fff; }
+.chip.status-written.active { background: #b08300;        border-color: #b08300;        color: #fff; }
 .chip.status-need.active    { background: var(--danger); border-color: var(--danger); color: #fff; }
 
 .pill { display: inline-block; padding: 4px 11px; border-radius: 999px; font-size: 12.5px; font-weight: 700; }
@@ -146,7 +196,18 @@ tr.zero-row td.danger-cell { color: var(--danger); font-weight: 800; }
 .pill-jamun { background: #dde1ff; color: #3b3f8a; }
 .pill-jeungrye { background: #d8eedd; color: #1f6b3a; }
 
-.hidden { display: none !important; }
+.page { display: none; }
+.page.active { display: block; }
+
+.muted-row td { color: var(--muted); }
+
+.manager-section { margin-bottom: 26px; }
+.manager-section .manager-head {
+  display: flex; align-items: center; gap: 10px;
+  margin: 18px 0 8px;
+}
+.manager-section .manager-head .name { font-weight: 700; font-size: 15.5px; }
+.manager-section .manager-head .count { font-size: 13px; color: var(--muted); }
 
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
@@ -154,7 +215,7 @@ tr.zero-row td.danger-cell { color: var(--danger); font-weight: 800; }
   main { padding: 18px; }
   .group-grid { grid-template-columns: 1fr; }
   .sub-grid { grid-template-columns: repeat(2, 1fr); }
-  .page-banner { padding: 18px 20px; }
+  .page-banner { padding: 18px 20px; flex-direction: column; align-items: flex-start; }
   .page-banner h2 { font-size: 18px; }
 }
 </style>
@@ -165,343 +226,415 @@ tr.zero-row td.danger-cell { color: var(--danger); font-weight: 800; }
     <h1>서울3사업부 통합 현황판</h1>
     <div class="nav-group">
       <div class="nav-label">mkt tool</div>
-      <div class="nav-item outlined" data-section="mkt-overview">사업부현황</div>
-      <div class="nav-item outlined" data-section="mkt-detail">사무소 세부현황</div>
+      <div class="nav-item outlined active" data-page="mkt-overview">사업부현황</div>
+      <div class="nav-item outlined" data-page="mkt-detail">사무소 세부현황</div>
     </div>
     <div class="nav-group">
       <div class="nav-label">pro</div>
-      <div class="nav-item outlined" data-section="pro-overview">pro 현황</div>
+      <div class="nav-item outlined" data-page="pro-overview">pro 현황</div>
     </div>
   </aside>
-  <main id="main"></main>
+  <main>
+    <!-- MKT OVERVIEW -->
+    <section class="page active" id="page-mkt-overview">
+      <div class="page-banner">
+        <div>
+          <div class="banner-left">
+            <h2>서울3 mkt tool 현황판</h2>
+            <span class="gen-time">26년 6월 29일 09시 13분 기준</span>
+          </div>
+        </div>
+      </div>
+      <div class="group-grid" id="mkt-overview-totals"></div>
+      <h3 class="section-title">사무소별 현황 (행 클릭 시 세부 이동)</h3>
+      <div class="table-wrap">
+        <table id="mkt-overview-table"></table>
+      </div>
+    </section>
+
+    <!-- MKT DETAIL -->
+    <section class="page" id="page-mkt-detail">
+      <div class="page-banner">
+        <div>
+          <div class="banner-left">
+            <h2>사무소 세부현황</h2>
+            <span class="gen-time">26년 6월 29일 09시 13분 기준</span>
+          </div>
+          <div class="banner-sub" id="mkt-detail-sub"></div>
+        </div>
+      </div>
+      <div class="office-tabs" id="mkt-detail-tabs"></div>
+      <div class="group-grid" id="mkt-detail-totals"></div>
+      <div class="manager-filter" id="mkt-detail-managers">
+        <span class="filter-label">담당자</span>
+      </div>
+      <div class="status-filter" id="mkt-detail-statuses">
+        <span class="filter-label">상태</span>
+      </div>
+      <h3 class="section-title">거래처 리스트 <span class="section-title-count" id="mkt-detail-count">(0건)</span></h3>
+      <div class="table-wrap">
+        <table id="mkt-detail-table"></table>
+      </div>
+    </section>
+
+    <!-- PRO -->
+    <section class="page" id="page-pro-overview">
+      <div class="page-banner">
+        <div>
+          <div class="banner-left">
+            <h2>서울3 PRO 현황</h2>
+            <span class="gen-time">26년 6월 29일 09시 13분 기준</span>
+          </div>
+          <div class="banner-sub">펙수클루PRO V4 (20mg) 관리장 기준</div>
+        </div>
+      </div>
+      <div class="kpi-grid" id="pro-kpi"></div>
+      <h3 class="section-title">사무소별 현황 (등록률 높은 순)</h3>
+      <div class="table-wrap">
+        <table id="pro-office-table"></table>
+      </div>
+      <h3 class="section-title">거래처별 현황 <span class="section-title-count" id="pro-inst-count">(0건)</span></h3>
+      <div class="table-wrap">
+        <table id="pro-inst-table"></table>
+      </div>
+    </section>
+  </main>
 </div>
-
 <script>
-const DATA = {"generatedAt": "26년 6월 25일 09시 35분 기준", "mktTool": {"summary": {"자문": {"신청": 42, "작성완료": 29, "지급완료": 27, "작성필요": 13}, "증례": {"신청": 60, "작성완료": 30, "지급완료": 25, "작성필요": 30}}, "officeDetails": [{"office": "남부1", "jamun": {"신청": 2, "작성완료": 2, "지급완료": 2, "작성필요": 0}, "jeungrye": {"신청": 4, "작성완료": 4, "지급완료": 4, "작성필요": 0}}, {"office": "남부2", "jamun": {"신청": 2, "작성완료": 2, "지급완료": 2, "작성필요": 0}, "jeungrye": {"신청": 4, "작성완료": 3, "지급완료": 3, "작성필요": 1}}, {"office": "남부3", "jamun": {"신청": 2, "작성완료": 2, "지급완료": 2, "작성필요": 0}, "jeungrye": {"신청": 0, "작성완료": 0, "지급완료": 0, "작성필요": 0}}, {"office": "동부1", "jamun": {"신청": 5, "작성완료": 2, "지급완료": 2, "작성필요": 3}, "jeungrye": {"신청": 5, "작성완료": 1, "지급완료": 1, "작성필요": 4}}, {"office": "동부2", "jamun": {"신청": 6, "작성완료": 3, "지급완료": 3, "작성필요": 3}, "jeungrye": {"신청": 13, "작성완료": 5, "지급완료": 4, "작성필요": 8}}, {"office": "북부1", "jamun": {"신청": 5, "작성완료": 5, "지급완료": 5, "작성필요": 0}, "jeungrye": {"신청": 9, "작성완료": 4, "지급완료": 4, "작성필요": 5}}, {"office": "북부2", "jamun": {"신청": 0, "작성완료": 0, "지급완료": 0, "작성필요": 0}, "jeungrye": {"신청": 2, "작성완료": 0, "지급완료": 0, "작성필요": 2}}, {"office": "북부3", "jamun": {"신청": 11, "작성완료": 7, "지급완료": 5, "작성필요": 4}, "jeungrye": {"신청": 15, "작성완료": 9, "지급완료": 5, "작성필요": 6}}, {"office": "서부1", "jamun": {"신청": 0, "작성완료": 0, "지급완료": 0, "작성필요": 0}, "jeungrye": {"신청": 2, "작성완료": 1, "지급완료": 1, "작성필요": 1}}, {"office": "서부2", "jamun": {"신청": 9, "작성완료": 6, "지급완료": 6, "작성필요": 3}, "jeungrye": {"신청": 6, "작성완료": 3, "지급완료": 3, "작성필요": 3}}], "offices": ["남부1", "남부2", "남부3", "동부1", "동부2", "북부1", "북부2", "북부3", "서부1", "서부2"], "officeData": {"남부1": {"managers": ["권준", "백은주", "신지철", "한정훈", "황지유"], "rows": [{"manager": "신지철", "hospital": "청계내과", "doctor": "김지호", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "권준", "hospital": "연세바다소아청소년의원", "doctor": "정재화", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "신지철", "hospital": "아나파신경과", "doctor": "박종원", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "백은주", "hospital": "서초우면정형외과", "doctor": "조영아", "kind": "증례", "status": "지급완료", "payDate": "2026-05-29"}, {"manager": "황지유", "hospital": "다나마취통증의학과의원", "doctor": "이창의", "kind": "증례", "status": "지급완료", "payDate": "2026-05-29"}, {"manager": "한정훈", "hospital": "대치서울이비인후과의원", "doctor": "김영석", "kind": "증례", "status": "지급완료", "payDate": "2026-05-29"}]}, "남부2": {"managers": ["김건희", "김종욱", "유진수", "이상훈", "장지희"], "rows": [{"manager": "유진수", "hospital": "판교제일이비인후과의원", "doctor": "홍수원", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "장지희", "hospital": "분당선내과", "doctor": "이정선", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "김종욱", "hospital": "21세기의원", "doctor": "원욱희", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "이상훈", "hospital": "서울리드내과", "doctor": "최재균", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "김건희", "hospital": "메리놀정형외과의원", "doctor": "정한지", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "유진수", "hospital": "모란튼튼척의원", "doctor": "이준형", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}]}, "남부3": {"managers": ["강성윤", "오인성"], "rows": [{"manager": "오인성", "hospital": "상쾌한이비인후과", "doctor": "손형래", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "강성윤", "hospital": "김철신정형외과", "doctor": "유병찬", "kind": "자문", "status": "지급완료", "payDate": "2026-05-29"}]}, "동부1": {"managers": ["김은종", "김은주", "소민섭", "이상원", "최진혁", "허종환"], "rows": [{"manager": "소민섭", "hospital": "365류마고내과의원", "doctor": "안상희", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "최진혁", "hospital": "명일건내과", "doctor": "김경진", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "이상원", "hospital": "연세숲내과", "doctor": "김채원", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "김은주", "hospital": "강동서울의원", "doctor": "김봉식", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "허종환", "hospital": "기쁨내과", "doctor": "이효근", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "소민섭", "hospital": "365류마고내과의원", "doctor": "안상희", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "최진혁", "hospital": "명일건내과", "doctor": "김경진", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "이상원", "hospital": "연세숲내과", "doctor": "김채원", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "김은종", "hospital": "삼성내과의원", "doctor": "박상준", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "이상원", "hospital": "이엠365의원(하남점)", "doctor": "황호진", "kind": "증례", "status": "작성필요", "payDate": ""}]}, "동부2": {"managers": ["김하진", "김현민", "박서영", "이원경", "전준혁", "주정환"], "rows": [{"manager": "김현민", "hospital": "아산온유이비인후과의원", "doctor": "김동현", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "주정환", "hospital": "바른이비인후과", "doctor": "임종현", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "김하진", "hospital": "광주제일내과의원", "doctor": "김구엽", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "김현민", "hospital": "송파원정형외과", "doctor": "이태경", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "전준혁", "hospital": "여주아산내과", "doctor": "권태희", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "박서영", "hospital": "송파바른정형외과", "doctor": "김정훈", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "김현민", "hospital": "아산온유이비인후과의원", "doctor": "김동현", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "박서영", "hospital": "강남삼성정형외과의원", "doctor": "김종혁", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "주정환", "hospital": "바른이비인후과", "doctor": "조용희", "kind": "증례", "status": "지급완료", "payDate": "2026-05-29"}, {"manager": "김현민", "hospital": "송파원정형외과", "doctor": "이태경", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "이원경", "hospital": "잠실연세내과의원", "doctor": "송재천", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "주정환", "hospital": "서울휴내과이비인후과", "doctor": "류한준", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "전준혁", "hospital": "이안숙의원", "doctor": "이안숙", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "전준혁", "hospital": "서울삼성내과의원", "doctor": "이지은", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "이원경", "hospital": "아산하트내과", "doctor": "김민수", "kind": "증례", "status": "작성완료", "payDate": ""}, {"manager": "김하진", "hospital": "전영훈이비인후과의원", "doctor": "전영훈", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "이원경", "hospital": "아산하트내과", "doctor": "엄상용", "kind": "증례", "status": "지급완료", "payDate": ""}, {"manager": "박서영", "hospital": "연세신경과의원", "doctor": "한범기", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "김현민", "hospital": "서울아산류마내과(서울아산나성수내과)", "doctor": "나성수", "kind": "증례", "status": "작성필요", "payDate": ""}]}, "북부1": {"managers": ["김민성", "김성하", "시현성", "편규리"], "rows": [{"manager": "시현성", "hospital": "연세우리내과의원", "doctor": "이수영", "kind": "자문", "status": "지급완료", "payDate": "2026-05-29"}, {"manager": "편규리", "hospital": "세진정형외과의원", "doctor": "정상훈", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "시현성", "hospital": "연세우리내과의원", "doctor": "이공명", "kind": "자문", "status": "지급완료", "payDate": "2026-05-29"}, {"manager": "편규리", "hospital": "바로척마취통증의학과의원", "doctor": "이인곤", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "편규리", "hospital": "바른속내과의원", "doctor": "김수정", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "편규리", "hospital": "세진정형외과의원", "doctor": "정상훈", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "김성하", "hospital": "삼성서울탑정형외과의원", "doctor": "김동욱", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "편규리", "hospital": "봄날에민내과의원", "doctor": "김보민", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "김민성", "hospital": "우리사랑내과", "doctor": "이철우", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "편규리", "hospital": "바로척마취통증의학과의원", "doctor": "전보경", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "편규리", "hospital": "바로척마취통증의학과의원", "doctor": "양우석", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "편규리", "hospital": "연세류내과의원", "doctor": "유성호", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "편규리", "hospital": "누리꿈이비인후과의원", "doctor": "공원경", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "편규리", "hospital": "최영주당당내과의원", "doctor": "최영주", "kind": "증례", "status": "작성필요", "payDate": ""}]}, "북부2": {"managers": ["김민경", "박주호"], "rows": [{"manager": "김민경", "hospital": "더조은내과의원", "doctor": "강원찬", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "박주호", "hospital": "김영재내과의원", "doctor": "김영재", "kind": "증례", "status": "작성필요", "payDate": ""}]}, "북부3": {"managers": ["신률", "양홍만", "우원식", "우원식010", "이형철"], "rows": [{"manager": "신률", "hospital": "다편한내과의원", "doctor": "김성근", "kind": "자문", "status": "지급완료", "payDate": "2026-05-29"}, {"manager": "우원식", "hospital": "남양주백병원", "doctor": "백사무엘", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "우원식", "hospital": "남양주백병원", "doctor": "이명윤", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "양홍만", "hospital": "서울정통연합의원", "doctor": "이대근", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "이형철", "hospital": "삼성가정의학과의원", "doctor": "정근형", "kind": "자문", "status": "작성완료", "payDate": ""}, {"manager": "이형철", "hospital": "성모부부내과", "doctor": "이영훈", "kind": "자문", "status": "작성완료", "payDate": ""}, {"manager": "양홍만", "hospital": "이병철내과", "doctor": "이병철", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "양홍만", "hospital": "나음내과", "doctor": "서정웅", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "우원식", "hospital": "우리중앙의원", "doctor": "이종안", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "신률", "hospital": "바른내과의원", "doctor": "조성철", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "신률", "hospital": "서울화외과의원", "doctor": "강정봉", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "이형철", "hospital": "삼성가정의학과", "doctor": "정근형", "kind": "증례", "status": "작성완료", "payDate": ""}, {"manager": "이형철", "hospital": "성모부부내과", "doctor": "이영훈", "kind": "증례", "status": "작성완료", "payDate": ""}, {"manager": "양홍만", "hospital": "이병철내과", "doctor": "이병철", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "양홍만", "hospital": "나음내과", "doctor": "서정웅", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "우원식010", "hospital": "우리중앙의원", "doctor": "이종안", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "우원식", "hospital": "남양주백병원", "doctor": "이명윤", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "우원식", "hospital": "남양주백병원", "doctor": "백사무엘", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "신률", "hospital": "서울화외과의원", "doctor": "강정봉", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "신률", "hospital": "서울김내과의원", "doctor": "김정미", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "신률", "hospital": "다편한내과의원", "doctor": "김성근", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "우원식", "hospital": "아산정진욱내과", "doctor": "정진욱", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "양홍만", "hospital": "강앤강내과", "doctor": "강규호", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "양홍만", "hospital": "아산재건정형외과", "doctor": "방재현", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "신률", "hospital": "서울화외과", "doctor": "김준한", "kind": "증례", "status": "작성완료", "payDate": ""}, {"manager": "신률", "hospital": "서울화외과의원", "doctor": "이호진", "kind": "증례", "status": "작성완료", "payDate": ""}]}, "서부1": {"managers": ["최준"], "rows": [{"manager": "최준", "hospital": "연세수재활의학과의원", "doctor": "정호익", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "최준", "hospital": "목동기운찬마취통증의학과의원", "doctor": "노용성", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}]}, "서부2": {"managers": ["김재현", "박은혜", "신민철", "이준혁", "임찬혁", "최민정"], "rows": [{"manager": "임찬혁", "hospital": "쿨맨남성의원", "doctor": "이상철", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "임찬혁", "hospital": "다편한마취통증의학과의원", "doctor": "방경호", "kind": "자문", "status": "지급완료", "payDate": "2026-05-29"}, {"manager": "임찬혁", "hospital": "새봄외과의원", "doctor": "박필경", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "임찬혁", "hospital": "정발산연세마디마취통증의학과의원", "doctor": "이정석", "kind": "자문", "status": "지급완료", "payDate": "2026-05-29"}, {"manager": "신민철", "hospital": "든든한병원", "doctor": "강지석", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "박은혜", "hospital": "한병상이비인후과의원", "doctor": "한병상", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "김재현", "hospital": "참편한마취통증의학과", "doctor": "박병은", "kind": "자문", "status": "작성필요", "payDate": ""}, {"manager": "김재현", "hospital": "일산역훈내과", "doctor": "김영훈", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "최민정", "hospital": "야당연세정형외과", "doctor": "김준식", "kind": "자문", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "신민철", "hospital": "든든한병원", "doctor": "강지석", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "박은혜", "hospital": "한병상이비인후과의원", "doctor": "한병상", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "이준혁", "hospital": "이어나정형외과", "doctor": "김윤엽", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}, {"manager": "최민정", "hospital": "운정연세사랑의원", "doctor": "전상철", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "최민정", "hospital": "운정연세사랑의원", "doctor": "전상은", "kind": "증례", "status": "작성필요", "payDate": ""}, {"manager": "최민정", "hospital": "야당연세정형외과", "doctor": "김준식", "kind": "증례", "status": "지급완료", "payDate": "2026-06-30"}]}}}, "proStatus": {"divisionSummary": {"총기관수": 34, "총목표": 1407, "총등록": 108, "전체등록률": 0.0767590618336887, "영기관수": 21}, "officeSummary": [{"office": "남부1", "count": 2, "goal": 40, "reg": 15, "rate": 0.375, "zeroCount": 0}, {"office": "남부3", "count": 5, "goal": 137, "reg": 32, "rate": 0.23357664233576642, "zeroCount": 3}, {"office": "북부1", "count": 6, "goal": 300, "reg": 26, "rate": 0.08666666666666667, "zeroCount": 3}, {"office": "북부2", "count": 7, "goal": 310, "reg": 23, "rate": 0.07419354838709677, "zeroCount": 5}, {"office": "동부1", "count": 4, "goal": 110, "reg": 7, "rate": 0.06363636363636363, "zeroCount": 3}, {"office": "서부2", "count": 2, "goal": 40, "reg": 2, "rate": 0.05, "zeroCount": 0}, {"office": "동부2", "count": 3, "goal": 150, "reg": 3, "rate": 0.02, "zeroCount": 2}, {"office": "남부2", "count": 2, "goal": 100, "reg": 0, "rate": 0.0, "zeroCount": 2}, {"office": "북부3", "count": 3, "goal": 220, "reg": 0, "rate": 0.0, "zeroCount": 3}], "institutionList": [{"사업자번호": "1299258977.0", "사업부": "서울3", "사무소": "남부2", "담당자": "유진수", "기관명": "삼성편한내과", "연구자명": "박상언", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "1949701323.0", "사업부": "서울3", "사무소": "남부2", "담당자": "장지희", "기관명": "미금본닥터정형외과의원", "연구자명": "이수현", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "5059015692.0", "사업부": "서울3", "사무소": "남부3", "담당자": "강성윤", "기관명": "손장원정형외과의원", "연구자명": "손장원", "목표": 30, "등록": 0, "등록률": 0.0}, {"사업자번호": "1079150769.0", "사업부": "서울3", "사무소": "남부3", "담당자": "이은동", "기관명": "아산진내과의원", "연구자명": "박태진", "목표": 30, "등록": 0, "등록률": 0.0}, {"사업자번호": "2289700423.0", "사업부": "서울3", "사무소": "남부3", "담당자": "이은동", "기관명": "연세부영가정의학과의원", "연구자명": "전수영", "목표": 30, "등록": 0, "등록률": 0.0}, {"사업자번호": "1269156162.0", "사업부": "서울3", "사무소": "동부1", "담당자": "김은종", "기관명": "삼성내과의원", "연구자명": "박상준", "목표": 20, "등록": 0, "등록률": 0.0}, {"사업자번호": "1809001742.0", "사업부": "서울3", "사무소": "동부1", "담당자": "김은주", "기관명": "삼성서울정형외과의원", "연구자명": "김정환", "목표": 10, "등록": 0, "등록률": 0.0}, {"사업자번호": "2069338988.0", "사업부": "서울3", "사무소": "동부1", "담당자": "소민섭", "기관명": "임성준신경외과", "연구자명": "임성준", "목표": 30, "등록": 0, "등록률": 0.0}, {"사업자번호": "3399600876.0", "사업부": "서울3", "사무소": "동부2", "담당자": "이원경", "기관명": "연세국민건강내과소아청소년과의원", "연구자명": "한민석", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "4189304010.0", "사업부": "서울3", "사무소": "동부2", "담당자": "이원경", "기관명": "플러스마취통증의학과의원", "연구자명": "이태형", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "1249531595.0", "사업부": "서울3", "사무소": "북부1", "담당자": "시현성", "기관명": "자인신경외과의원", "연구자명": "윤성민", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "2109217796.0", "사업부": "서울3", "사무소": "북부1", "담당자": "이찬희", "기관명": "이경원정형외과의원", "연구자명": "이경원", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "3499401539.0", "사업부": "서울3", "사무소": "북부1", "담당자": "이찬희", "기관명": "청량힐정형외과의원", "연구자명": "엄상화", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "2389501556.0", "사업부": "서울3", "사무소": "북부2", "담당자": "김동영", "기관명": "김앤정정형외과의원", "연구자명": "김석환", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "5139034652.0", "사업부": "서울3", "사무소": "북부2", "담당자": "김민경", "기관명": "새봄마취통증의학과의원", "연구자명": "김성순", "목표": 30, "등록": 0, "등록률": 0.0}, {"사업자번호": "2729900593.0", "사업부": "서울3", "사무소": "북부2", "담당자": "박현성", "기관명": "수유다나은정형외과의원", "연구자명": "이동기", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "2099063151.0", "사업부": "서울3", "사무소": "북부2", "담당자": "이원재", "기관명": "서울가정의학과의원", "연구자명": "김소연", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "2179604155.0", "사업부": "서울3", "사무소": "북부2", "담당자": "최태우", "기관명": "제이내과", "연구자명": "조호준", "목표": 50, "등록": 0, "등록률": 0.0}, {"사업자번호": "1329134843.0", "사업부": "서울3", "사무소": "북부3", "담당자": "공경원", "기관명": "행복한연세가정의학과의원", "연구자명": "문상훈", "목표": 80, "등록": 0, "등록률": 0.0}, {"사업자번호": "1279152529.0", "사업부": "서울3", "사무소": "북부3", "담당자": "신률", "기관명": "바른정형외과", "연구자명": "김기욱", "목표": 40, "등록": 0, "등록률": 0.0}, {"사업자번호": "1279045773.0", "사업부": "서울3", "사무소": "북부3", "담당자": "채왕천", "기관명": "연세의원", "연구자명": "유종천", "목표": 100, "등록": 0, "등록률": 0.0}, {"사업자번호": "2179847541.0", "사업부": "서울3", "사무소": "남부1", "담당자": "권준", "기관명": "연세다정한365의원", "연구자명": "조유나", "목표": 20, "등록": 12, "등록률": 0.6}, {"사업자번호": "2209099831.0", "사업부": "서울3", "사무소": "남부1", "담당자": "한정훈", "기관명": "센텀메디의원", "연구자명": "변형근", "목표": 20, "등록": 3, "등록률": 0.15}, {"사업자번호": "8929300226.0", "사업부": "서울3", "사무소": "남부3", "담당자": "송경선", "기관명": "성모튼튼정형외과의원", "연구자명": "이규영", "목표": 20, "등록": 5, "등록률": 0.25}, {"사업자번호": "6490403663.0", "사업부": "서울3", "사무소": "남부3", "담당자": "태민열", "기관명": "동작에스엔재활의학과의원", "연구자명": "전서영", "목표": 27, "등록": 27, "등록률": 1.0}, {"사업자번호": "5822701264.0", "사업부": "서울3", "사무소": "동부1", "담당자": "이상원", "기관명": "하남이엠365의원", "연구자명": "황호진", "목표": 50, "등록": 7, "등록률": 0.14}, {"사업자번호": "1269608947.0", "사업부": "서울3", "사무소": "동부2", "담당자": "전준혁", "기관명": "이안숙의원", "연구자명": "이안숙", "목표": 50, "등록": 3, "등록률": 0.06}, {"사업자번호": "7499100743.0", "사업부": "서울3", "사무소": "북부1", "담당자": "김민성", "기관명": "다온삼성정형외과의원", "연구자명": "강민수", "목표": 50, "등록": 2, "등록률": 0.04}, {"사업자번호": "7499100743.0", "사업부": "서울3", "사무소": "북부1", "담당자": "김민성", "기관명": "다온삼성정형외과의원", "연구자명": "김진우", "목표": 50, "등록": 3, "등록률": 0.06}, {"사업자번호": "6689002014.0", "사업부": "서울3", "사무소": "북부1", "담당자": "편규리", "기관명": "마포서울이비인후과의원", "연구자명": "노형일", "목표": 50, "등록": 21, "등록률": 0.42}, {"사업자번호": "5089895838.0", "사업부": "서울3", "사무소": "북부2", "담당자": "박주호", "기관명": "강북편한내과의원", "연구자명": "민지호", "목표": 50, "등록": 1, "등록률": 0.02}, {"사업자번호": "1329061455.0", "사업부": "서울3", "사무소": "북부2", "담당자": "박현성", "기관명": "삼성정형외과", "연구자명": "지형곤", "목표": 30, "등록": 22, "등록률": 0.7333333333333333}, {"사업자번호": "5252400539.0", "사업부": "서울3", "사무소": "서부2", "담당자": "박은혜", "기관명": "행신중앙의원", "연구자명": "이선규", "목표": 10, "등록": 1, "등록률": 0.1}, {"사업자번호": "5669202503.0", "사업부": "서울3", "사무소": "서부2", "담당자": "임찬혁", "기관명": "정발산연세마디마취통증의학과의원", "연구자명": "이정석", "목표": 30, "등록": 1, "등록률": 0.03333333333333333}]}};
-const fmt = (n) => Number(n||0).toLocaleString('ko-KR');
-const pct = (r) => (r*100).toFixed(1) + '%';
-
-const STATUS_OPTIONS = ['전체', '지급완료', '작성완료', '작성필요'];
-const STATUS_CHIP_CLASS = {
-  '지급완료': 'status-paid',
-  '작성완료': 'status-written',
-  '작성필요': 'status-need',
+const DATA = {"generated_at": "26년 6월 29일 09시 13분 기준", "mkt_tool": {"jamun_total": {"신청": 41, "작성완료": 29, "지급완료": 26, "작성필요": 12}, "case_total": {"신청": 59, "작성완료": 34, "지급완료": 24, "작성필요": 25}, "office_summary": [{"office": "남부1", "jamun": {"신청": 2, "작성완료": 2, "지급완료": 2, "작성필요": 0}, "case": {"신청": 4, "작성완료": 4, "지급완료": 4, "작성필요": 0}}, {"office": "남부2", "jamun": {"신청": 2, "작성완료": 2, "지급완료": 2, "작성필요": 0}, "case": {"신청": 4, "작성완료": 4, "지급완료": 3, "작성필요": 0}}, {"office": "남부3", "jamun": {"신청": 2, "작성완료": 2, "지급완료": 2, "작성필요": 0}, "case": {"신청": 0, "작성완료": 0, "지급완료": 0, "작성필요": 0}}, {"office": "동부1", "jamun": {"신청": 5, "작성완료": 2, "지급완료": 2, "작성필요": 3}, "case": {"신청": 5, "작성완료": 1, "지급완료": 1, "작성필요": 4}}, {"office": "동부2", "jamun": {"신청": 6, "작성완료": 3, "지급완료": 3, "작성필요": 3}, "case": {"신청": 13, "작성완료": 6, "지급완료": 4, "작성필요": 7}}, {"office": "북부1", "jamun": {"신청": 5, "작성완료": 5, "지급완료": 5, "작성필요": 0}, "case": {"신청": 9, "작성완료": 4, "지급완료": 4, "작성필요": 5}}, {"office": "북부2", "jamun": {"신청": 0, "작성완료": 0, "지급완료": 0, "작성필요": 0}, "case": {"신청": 2, "작성완료": 0, "지급완료": 0, "작성필요": 2}}, {"office": "북부3", "jamun": {"신청": 11, "작성완료": 8, "지급완료": 5, "작성필요": 3}, "case": {"신청": 15, "작성완료": 12, "지급완료": 5, "작성필요": 3}}, {"office": "서부1", "jamun": {"신청": 0, "작성완료": 0, "지급완료": 0, "작성필요": 0}, "case": {"신청": 2, "작성완료": 1, "지급완료": 1, "작성필요": 1}}, {"office": "서부2", "jamun": {"신청": 8, "작성완료": 5, "지급완료": 5, "작성필요": 3}, "case": {"신청": 5, "작성완료": 2, "지급완료": 2, "작성필요": 3}}], "office_details": {"남부1": {"managers": ["전체", "권준", "백은주", "신지철", "한정훈", "황지유"], "jamun_summary": {"신청": 2, "작성완료": 2, "지급완료": 2, "작성필요": 0}, "case_summary": {"신청": 4, "작성완료": 4, "지급완료": 4, "작성필요": 0}, "rows": [{"office": "남부1", "manager": "신지철", "hospital": "청계내과", "doctor": "김지호", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "남부1", "manager": "권준", "hospital": "연세바다소아청소년의원", "doctor": "정재화", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "남부1", "manager": "신지철", "hospital": "아나파신경과", "doctor": "박종원", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "남부1", "manager": "백은주", "hospital": "서초우면정형외과", "doctor": "조영아", "status": "지급완료", "paid_date": "2026-05-29", "kind": "증례"}, {"office": "남부1", "manager": "황지유", "hospital": "다나마취통증의학과의원", "doctor": "이창의", "status": "지급완료", "paid_date": "2026-05-29", "kind": "증례"}, {"office": "남부1", "manager": "한정훈", "hospital": "대치서울이비인후과의원", "doctor": "김영석", "status": "지급완료", "paid_date": "2026-05-29", "kind": "증례"}]}, "남부2": {"managers": ["전체", "김건희", "김종욱", "유진수", "이상훈", "장지희"], "jamun_summary": {"신청": 2, "작성완료": 2, "지급완료": 2, "작성필요": 0}, "case_summary": {"신청": 4, "작성완료": 4, "지급완료": 3, "작성필요": 0}, "rows": [{"office": "남부2", "manager": "유진수", "hospital": "판교제일이비인후과의원", "doctor": "홍수원", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "남부2", "manager": "장지희", "hospital": "분당선내과", "doctor": "이정선", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "남부2", "manager": "김종욱", "hospital": "21세기의원", "doctor": "원욱희", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "남부2", "manager": "이상훈", "hospital": "서울리드내과", "doctor": "최재균", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "남부2", "manager": "김건희", "hospital": "메리놀정형외과의원", "doctor": "정한지", "status": "작성완료", "paid_date": "", "kind": "증례"}, {"office": "남부2", "manager": "유진수", "hospital": "모란튼튼척의원", "doctor": "이준형", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}]}, "남부3": {"managers": ["전체", "강성윤", "오인성"], "jamun_summary": {"신청": 2, "작성완료": 2, "지급완료": 2, "작성필요": 0}, "case_summary": {"신청": 0, "작성완료": 0, "지급완료": 0, "작성필요": 0}, "rows": [{"office": "남부3", "manager": "오인성", "hospital": "상쾌한이비인후과", "doctor": "손형래", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "남부3", "manager": "강성윤", "hospital": "김철신정형외과", "doctor": "유병찬", "status": "지급완료", "paid_date": "2026-05-29", "kind": "자문"}]}, "동부1": {"managers": ["전체", "김은종", "김은주", "소민섭", "이상원", "최진혁", "허종환"], "jamun_summary": {"신청": 5, "작성완료": 2, "지급완료": 2, "작성필요": 3}, "case_summary": {"신청": 5, "작성완료": 1, "지급완료": 1, "작성필요": 4}, "rows": [{"office": "동부1", "manager": "소민섭", "hospital": "365류마고내과의원", "doctor": "안상희", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "동부1", "manager": "허종환", "hospital": "기쁨내과", "doctor": "이효근", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "동부1", "manager": "최진혁", "hospital": "명일건내과", "doctor": "김경진", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "동부1", "manager": "이상원", "hospital": "연세숲내과", "doctor": "김채원", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "동부1", "manager": "김은주", "hospital": "강동서울의원", "doctor": "김봉식", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "동부1", "manager": "소민섭", "hospital": "365류마고내과의원", "doctor": "안상희", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "동부1", "manager": "최진혁", "hospital": "명일건내과", "doctor": "김경진", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "동부1", "manager": "이상원", "hospital": "연세숲내과", "doctor": "김채원", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "동부1", "manager": "김은종", "hospital": "삼성내과의원", "doctor": "박상준", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "동부1", "manager": "이상원", "hospital": "이엠365의원(하남점)", "doctor": "황호진", "status": "작성필요", "paid_date": "", "kind": "증례"}]}, "동부2": {"managers": ["전체", "김하진", "김현민", "박서영", "이원경", "전준혁", "주정환"], "jamun_summary": {"신청": 6, "작성완료": 3, "지급완료": 3, "작성필요": 3}, "case_summary": {"신청": 13, "작성완료": 6, "지급완료": 4, "작성필요": 7}, "rows": [{"office": "동부2", "manager": "김현민", "hospital": "아산온유이비인후과의원", "doctor": "김동현", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "동부2", "manager": "주정환", "hospital": "바른이비인후과", "doctor": "임종현", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "동부2", "manager": "김현민", "hospital": "송파원정형외과", "doctor": "이태경", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "동부2", "manager": "김하진", "hospital": "광주제일내과의원", "doctor": "김구엽", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "동부2", "manager": "전준혁", "hospital": "여주아산내과", "doctor": "권태희", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "동부2", "manager": "박서영", "hospital": "송파바른정형외과", "doctor": "김정훈", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "동부2", "manager": "김현민", "hospital": "아산온유이비인후과의원", "doctor": "김동현", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "동부2", "manager": "박서영", "hospital": "강남삼성정형외과의원", "doctor": "김종혁", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "동부2", "manager": "주정환", "hospital": "바른이비인후과", "doctor": "조용희", "status": "지급완료", "paid_date": "2026-05-29", "kind": "증례"}, {"office": "동부2", "manager": "김현민", "hospital": "송파원정형외과", "doctor": "이태경", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "동부2", "manager": "이원경", "hospital": "잠실연세내과의원", "doctor": "송재천", "status": "작성완료", "paid_date": "", "kind": "증례"}, {"office": "동부2", "manager": "주정환", "hospital": "서울휴내과이비인후과", "doctor": "류한준", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "동부2", "manager": "전준혁", "hospital": "이안숙의원", "doctor": "이안숙", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "동부2", "manager": "전준혁", "hospital": "서울삼성내과의원", "doctor": "이지은", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "동부2", "manager": "이원경", "hospital": "아산하트내과", "doctor": "김민수", "status": "작성완료", "paid_date": "", "kind": "증례"}, {"office": "동부2", "manager": "김하진", "hospital": "전영훈이비인후과의원", "doctor": "전영훈", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "동부2", "manager": "이원경", "hospital": "아산하트내과", "doctor": "엄상용", "status": "지급완료", "paid_date": "", "kind": "증례"}, {"office": "동부2", "manager": "박서영", "hospital": "연세신경과의원", "doctor": "한범기", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "동부2", "manager": "김현민", "hospital": "서울아산류마내과(서울아산나성수내과)", "doctor": "나성수", "status": "작성필요", "paid_date": "", "kind": "증례"}]}, "북부1": {"managers": ["전체", "김민성", "김성하", "시현성", "편규리"], "jamun_summary": {"신청": 5, "작성완료": 5, "지급완료": 5, "작성필요": 0}, "case_summary": {"신청": 9, "작성완료": 4, "지급완료": 4, "작성필요": 5}, "rows": [{"office": "북부1", "manager": "시현성", "hospital": "연세우리내과의원", "doctor": "이수영", "status": "지급완료", "paid_date": "2026-05-29", "kind": "자문"}, {"office": "북부1", "manager": "편규리", "hospital": "세진정형외과의원", "doctor": "정상훈", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "북부1", "manager": "시현성", "hospital": "연세우리내과의원", "doctor": "이공명", "status": "지급완료", "paid_date": "2026-05-29", "kind": "자문"}, {"office": "북부1", "manager": "편규리", "hospital": "바로척마취통증의학과의원", "doctor": "이인곤", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "북부1", "manager": "편규리", "hospital": "바른속내과의원", "doctor": "김수정", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "북부1", "manager": "편규리", "hospital": "세진정형외과의원", "doctor": "정상훈", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "북부1", "manager": "김성하", "hospital": "삼성서울탑정형외과의원", "doctor": "김동욱", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "북부1", "manager": "편규리", "hospital": "봄날에민내과의원", "doctor": "김보민", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "북부1", "manager": "김민성", "hospital": "우리사랑내과", "doctor": "이철우", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "북부1", "manager": "편규리", "hospital": "바로척마취통증의학과의원", "doctor": "전보경", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "북부1", "manager": "편규리", "hospital": "바로척마취통증의학과의원", "doctor": "양우석", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "북부1", "manager": "편규리", "hospital": "연세류내과의원", "doctor": "유성호", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "북부1", "manager": "편규리", "hospital": "누리꿈이비인후과의원", "doctor": "공원경", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "북부1", "manager": "편규리", "hospital": "최영주당당내과의원", "doctor": "최영주", "status": "작성필요", "paid_date": "", "kind": "증례"}]}, "북부2": {"managers": ["전체", "김민경", "박주호"], "jamun_summary": {"신청": 0, "작성완료": 0, "지급완료": 0, "작성필요": 0}, "case_summary": {"신청": 2, "작성완료": 0, "지급완료": 0, "작성필요": 2}, "rows": [{"office": "북부2", "manager": "김민경", "hospital": "더조은내과의원", "doctor": "강원찬", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "북부2", "manager": "박주호", "hospital": "김영재내과의원", "doctor": "김영재", "status": "작성필요", "paid_date": "", "kind": "증례"}]}, "북부3": {"managers": ["전체", "신률", "양홍만", "우원식", "우원식010", "이형철"], "jamun_summary": {"신청": 11, "작성완료": 8, "지급완료": 5, "작성필요": 3}, "case_summary": {"신청": 15, "작성완료": 12, "지급완료": 5, "작성필요": 3}, "rows": [{"office": "북부3", "manager": "신률", "hospital": "다편한내과의원", "doctor": "김성근", "status": "지급완료", "paid_date": "2026-05-29", "kind": "자문"}, {"office": "북부3", "manager": "우원식", "hospital": "남양주백병원", "doctor": "백사무엘", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "북부3", "manager": "양홍만", "hospital": "서울정통연합의원", "doctor": "이대근", "status": "작성완료", "paid_date": "", "kind": "자문"}, {"office": "북부3", "manager": "이형철", "hospital": "삼성가정의학과의원", "doctor": "정근형", "status": "작성완료", "paid_date": "", "kind": "자문"}, {"office": "북부3", "manager": "이형철", "hospital": "성모부부내과", "doctor": "이영훈", "status": "작성완료", "paid_date": "", "kind": "자문"}, {"office": "북부3", "manager": "양홍만", "hospital": "이병철내과", "doctor": "이병철", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "북부3", "manager": "양홍만", "hospital": "나음내과", "doctor": "서정웅", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "북부3", "manager": "신률", "hospital": "바른내과의원", "doctor": "조성철", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "북부3", "manager": "우원식", "hospital": "남양주백병원", "doctor": "이명윤", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "북부3", "manager": "우원식", "hospital": "우리중앙의원", "doctor": "이종안", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "북부3", "manager": "신률", "hospital": "서울화외과의원", "doctor": "강정봉", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "북부3", "manager": "이형철", "hospital": "삼성가정의학과", "doctor": "정근형", "status": "작성완료", "paid_date": "", "kind": "증례"}, {"office": "북부3", "manager": "이형철", "hospital": "성모부부내과", "doctor": "이영훈", "status": "작성완료", "paid_date": "", "kind": "증례"}, {"office": "북부3", "manager": "양홍만", "hospital": "이병철내과", "doctor": "이병철", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "북부3", "manager": "양홍만", "hospital": "나음내과", "doctor": "서정웅", "status": "작성완료", "paid_date": "", "kind": "증례"}, {"office": "북부3", "manager": "우원식010", "hospital": "우리중앙의원", "doctor": "이종안", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "북부3", "manager": "우원식", "hospital": "남양주백병원", "doctor": "이명윤", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "북부3", "manager": "우원식", "hospital": "남양주백병원", "doctor": "백사무엘", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "북부3", "manager": "신률", "hospital": "서울화외과의원", "doctor": "강정봉", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "북부3", "manager": "신률", "hospital": "서울김내과의원", "doctor": "김정미", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "북부3", "manager": "신률", "hospital": "다편한내과의원", "doctor": "김성근", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "북부3", "manager": "우원식", "hospital": "아산정진욱내과", "doctor": "정진욱", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "북부3", "manager": "양홍만", "hospital": "강앤강내과", "doctor": "강규호", "status": "작성완료", "paid_date": "", "kind": "증례"}, {"office": "북부3", "manager": "양홍만", "hospital": "아산재건정형외과", "doctor": "방재현", "status": "작성완료", "paid_date": "", "kind": "증례"}, {"office": "북부3", "manager": "신률", "hospital": "서울화외과", "doctor": "김준한", "status": "작성완료", "paid_date": "", "kind": "증례"}, {"office": "북부3", "manager": "신률", "hospital": "서울화외과의원", "doctor": "이호진", "status": "작성완료", "paid_date": "", "kind": "증례"}]}, "서부1": {"managers": ["전체", "최준"], "jamun_summary": {"신청": 0, "작성완료": 0, "지급완료": 0, "작성필요": 0}, "case_summary": {"신청": 2, "작성완료": 1, "지급완료": 1, "작성필요": 1}, "rows": [{"office": "서부1", "manager": "최준", "hospital": "연세수재활의학과의원", "doctor": "정호익", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "서부1", "manager": "최준", "hospital": "목동기운찬마취통증의학과의원", "doctor": "노용성", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}]}, "서부2": {"managers": ["전체", "김재현", "박은혜", "신민철", "이준혁", "임찬혁", "최민정"], "jamun_summary": {"신청": 8, "작성완료": 5, "지급완료": 5, "작성필요": 3}, "case_summary": {"신청": 5, "작성완료": 2, "지급완료": 2, "작성필요": 3}, "rows": [{"office": "서부2", "manager": "임찬혁", "hospital": "다편한마취통증의학과의원", "doctor": "방경호", "status": "지급완료", "paid_date": "2026-05-29", "kind": "자문"}, {"office": "서부2", "manager": "임찬혁", "hospital": "정발산연세마디마취통증의학과의원", "doctor": "이정석", "status": "지급완료", "paid_date": "2026-05-29", "kind": "자문"}, {"office": "서부2", "manager": "신민철", "hospital": "든든한병원", "doctor": "강지석", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "서부2", "manager": "박은혜", "hospital": "한병상이비인후과의원", "doctor": "한병상", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "서부2", "manager": "김재현", "hospital": "일산역훈내과", "doctor": "김영훈", "status": "지급완료", "paid_date": "2026-06-30", "kind": "자문"}, {"office": "서부2", "manager": "임찬혁", "hospital": "쿨맨남성의원", "doctor": "이상철", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "서부2", "manager": "임찬혁", "hospital": "새봄외과의원", "doctor": "박필경", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "서부2", "manager": "김재현", "hospital": "참편한마취통증의학과", "doctor": "박병은", "status": "작성필요", "paid_date": "", "kind": "자문"}, {"office": "서부2", "manager": "신민철", "hospital": "든든한병원", "doctor": "강지석", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "서부2", "manager": "박은혜", "hospital": "한병상이비인후과의원", "doctor": "한병상", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "서부2", "manager": "이준혁", "hospital": "이어나정형외과", "doctor": "김윤엽", "status": "지급완료", "paid_date": "2026-06-30", "kind": "증례"}, {"office": "서부2", "manager": "최민정", "hospital": "운정연세사랑의원", "doctor": "전상철", "status": "작성필요", "paid_date": "", "kind": "증례"}, {"office": "서부2", "manager": "최민정", "hospital": "운정연세사랑의원", "doctor": "전상은", "status": "작성필요", "paid_date": "", "kind": "증례"}]}}}, "pro": {"summary": {"total_inst": 35, "total_target": 1507, "total_reg": 114, "overall_rate": 0.0756469807564698, "zero_count": 21}, "office_summary": [{"office": "남부1", "count": 2, "target": 40, "reg": 15, "rate": 0.375, "zero": 0}, {"office": "남부3", "count": 5, "target": 137, "reg": 32, "rate": 0.23357664233576642, "zero": 3}, {"office": "동부1", "count": 4, "target": 110, "reg": 9, "rate": 0.08181818181818182, "zero": 3}, {"office": "북부2", "count": 7, "target": 310, "reg": 23, "rate": 0.07419354838709677, "zero": 5}, {"office": "북부1", "count": 7, "target": 400, "reg": 29, "rate": 0.0725, "zero": 4}, {"office": "서부2", "count": 2, "target": 40, "reg": 2, "rate": 0.05, "zero": 0}, {"office": "동부2", "count": 3, "target": 150, "reg": 3, "rate": 0.02, "zero": 2}, {"office": "북부3", "count": 3, "target": 220, "reg": 1, "rate": 0.004545454545454545, "zero": 2}, {"office": "남부2", "count": 2, "target": 100, "reg": 0, "rate": 0.0, "zero": 2}], "institutions": [{"biz_no": "1299258977", "office": "남부2", "manager": "유진수", "inst_name": "삼성편한내과", "researcher": "박상언", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "1949701323", "office": "남부2", "manager": "장지희", "inst_name": "미금본닥터정형외과의원", "researcher": "이수현", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "5059015692", "office": "남부3", "manager": "강성윤", "inst_name": "손장원정형외과의원", "researcher": "손장원", "target": 30, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "1079150769", "office": "남부3", "manager": "이은동", "inst_name": "아산진내과의원", "researcher": "박태진", "target": 30, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "2289700423", "office": "남부3", "manager": "이은동", "inst_name": "연세부영가정의학과의원", "researcher": "전수영", "target": 30, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "1269156162", "office": "동부1", "manager": "김은종", "inst_name": "삼성내과의원", "researcher": "박상준", "target": 20, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "1809001742", "office": "동부1", "manager": "김은주", "inst_name": "삼성서울정형외과의원", "researcher": "김정환", "target": 10, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "2069338988", "office": "동부1", "manager": "소민섭", "inst_name": "임성준신경외과", "researcher": "임성준", "target": 30, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "3399600876", "office": "동부2", "manager": "이원경", "inst_name": "연세국민건강내과소아청소년과의원", "researcher": "한민석", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "4189304010", "office": "동부2", "manager": "이원경", "inst_name": "플러스마취통증의학과의원", "researcher": "이태형", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "2031798625", "office": "북부1", "manager": "김성하", "inst_name": "코이젠이비인후과의원", "researcher": "김지홍", "target": 100, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "1249531595", "office": "북부1", "manager": "시현성", "inst_name": "자인신경외과의원", "researcher": "윤성민", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "2109217796", "office": "북부1", "manager": "이찬희", "inst_name": "이경원정형외과의원", "researcher": "이경원", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "3499401539", "office": "북부1", "manager": "이찬희", "inst_name": "청량힐정형외과의원", "researcher": "엄상화", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "2389501556", "office": "북부2", "manager": "김동영", "inst_name": "김앤정정형외과의원", "researcher": "김석환", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "5139034652", "office": "북부2", "manager": "김민경", "inst_name": "새봄마취통증의학과의원", "researcher": "김성순", "target": 30, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "2729900593", "office": "북부2", "manager": "박현성", "inst_name": "수유다나은정형외과의원", "researcher": "이동기", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "2099063151", "office": "북부2", "manager": "이원재", "inst_name": "서울가정의학과의원", "researcher": "김소연", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "2179604155", "office": "북부2", "manager": "최태우", "inst_name": "제이내과", "researcher": "조호준", "target": 50, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "1329134843", "office": "북부3", "manager": "공경원", "inst_name": "행복한연세가정의학과의원", "researcher": "문상훈", "target": 80, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "1279045773", "office": "북부3", "manager": "채왕천", "inst_name": "연세의원", "researcher": "유종천", "target": 100, "reg": 0, "rate": 0.0, "is_zero": true, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "2179847541", "office": "남부1", "manager": "권준", "inst_name": "연세다정한365의원", "researcher": "조유나", "target": 20, "reg": 12, "rate": 0.6, "is_zero": false, "w0": 11, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "2209099831", "office": "남부1", "manager": "한정훈", "inst_name": "센텀메디의원", "researcher": "변형근", "target": 20, "reg": 3, "rate": 0.15, "is_zero": false, "w0": 3, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "8929300226", "office": "남부3", "manager": "송경선", "inst_name": "성모튼튼정형외과의원", "researcher": "이규영", "target": 20, "reg": 5, "rate": 0.25, "is_zero": false, "w0": 5, "w2": 1, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "6490403663", "office": "남부3", "manager": "태민열", "inst_name": "동작에스엔재활의학과의원", "researcher": "전서영", "target": 27, "reg": 27, "rate": 1.0, "is_zero": false, "w0": 18, "w2": 11, "w4": 5, "w8": 0, "w12": 0}, {"biz_no": "5822701264", "office": "동부1", "manager": "이상원", "inst_name": "하남이엠365의원", "researcher": "황호진", "target": 50, "reg": 9, "rate": 0.18, "is_zero": false, "w0": 8, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "1269608947", "office": "동부2", "manager": "전준혁", "inst_name": "이안숙의원", "researcher": "이안숙", "target": 50, "reg": 3, "rate": 0.06, "is_zero": false, "w0": 3, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "7499100743", "office": "북부1", "manager": "김민성", "inst_name": "다온삼성정형외과의원", "researcher": "강민수", "target": 50, "reg": 4, "rate": 0.08, "is_zero": false, "w0": 4, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "7499100743", "office": "북부1", "manager": "김민성", "inst_name": "다온삼성정형외과의원", "researcher": "김진우", "target": 50, "reg": 4, "rate": 0.08, "is_zero": false, "w0": 4, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "6689002014", "office": "북부1", "manager": "편규리", "inst_name": "마포서울이비인후과의원", "researcher": "노형일", "target": 50, "reg": 21, "rate": 0.42, "is_zero": false, "w0": 21, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "5089895838", "office": "북부2", "manager": "박주호", "inst_name": "강북편한내과의원", "researcher": "민지호", "target": 50, "reg": 1, "rate": 0.02, "is_zero": false, "w0": 1, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "1329061455", "office": "북부2", "manager": "박현성", "inst_name": "삼성정형외과", "researcher": "지형곤", "target": 30, "reg": 22, "rate": 0.7333333333, "is_zero": false, "w0": 9, "w2": 5, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "1279152529", "office": "북부3", "manager": "신률", "inst_name": "바른정형외과", "researcher": "김기욱", "target": 40, "reg": 1, "rate": 0.025, "is_zero": false, "w0": 0, "w2": 0, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "5252400539", "office": "서부2", "manager": "박은혜", "inst_name": "행신중앙의원", "researcher": "이선규", "target": 10, "reg": 1, "rate": 0.1, "is_zero": false, "w0": 1, "w2": 1, "w4": 0, "w8": 0, "w12": 0}, {"biz_no": "5669202503", "office": "서부2", "manager": "임찬혁", "inst_name": "정발산연세마디마취통증의학과의원", "researcher": "이정석", "target": 30, "reg": 1, "rate": 0.03333333333, "is_zero": false, "w0": 1, "w2": 0, "w4": 0, "w8": 0, "w12": 0}]}};
+const fmt = n => (n ?? 0).toLocaleString('ko-KR');
+const pct = (v) => {
+  if (v == null || isNaN(v)) return '0%';
+  return (v * 100).toFixed(1).replace(/\.0$/, '') + '%';
 };
 
 const state = {
-  activeSection: 'mkt-overview',
+  page: 'mkt-overview',
   selectedOffice: null,
   selectedManager: '전체',
   selectedStatus: '전체',
 };
 
-function banner(title, subtitle) {
-  return `
-  <div class="page-banner">
-    <div>
-      <div class="banner-left">
-        <h2>${title}</h2>
-        <span class="gen-time">${DATA.generatedAt}</span>
-      </div>
-      ${subtitle ? `<div class="banner-sub">${subtitle}</div>` : ''}
-    </div>
-  </div>`;
+// ===== Navigation =====
+function setPage(page) {
+  state.page = page;
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => {
+    n.classList.toggle('active', n.dataset.page === page);
+  });
+  window.scrollTo(0, 0);
 }
 
-function renderMktOverview() {
-  const s = DATA.mktTool.summary;
-  const subCard = (label, val, variant) => `
-    <div class="sub-card ${variant||''}">
-      <div class="label">${label}</div>
-      <div class="value">${fmt(val)}</div>
-    </div>`;
-  const groupCard = (title, m) => `
-    <div class="group-card">
-      <h3>${title}</h3>
-      <div class="sub-grid">
-        ${subCard('신청', m['신청'], 'accent')}
-        ${subCard('작성완료', m['작성완료'])}
-        ${subCard('지급완료', m['지급완료'])}
-        ${subCard('작성필요', m['작성필요'], 'danger')}
-      </div>
-    </div>`;
+document.querySelectorAll('.nav-item').forEach(n => {
+  n.addEventListener('click', () => setPage(n.dataset.page));
+});
 
-  const rows = DATA.mktTool.officeDetails.map(o => `
-    <tr class="clickable" data-office="${o.office}">
+// ===== MKT Overview =====
+function renderMktOverview() {
+  const jt = DATA.mkt_tool.jamun_total;
+  const ct = DATA.mkt_tool.case_total;
+  const totalsHtml = `
+    <div class="group-card">
+      <h3>자문 합계</h3>
+      <div class="sub-grid">
+        <div class="sub-card accent"><div class="label">신청</div><div class="value">${fmt(jt['신청'])}</div></div>
+        <div class="sub-card"><div class="label">작성완료</div><div class="value">${fmt(jt['작성완료'])}</div></div>
+        <div class="sub-card"><div class="label">지급완료</div><div class="value">${fmt(jt['지급완료'])}</div></div>
+        <div class="sub-card danger"><div class="label">작성필요</div><div class="value">${fmt(jt['작성필요'])}</div></div>
+      </div>
+    </div>
+    <div class="group-card">
+      <h3>증례 합계</h3>
+      <div class="sub-grid">
+        <div class="sub-card accent"><div class="label">신청</div><div class="value">${fmt(ct['신청'])}</div></div>
+        <div class="sub-card"><div class="label">작성완료</div><div class="value">${fmt(ct['작성완료'])}</div></div>
+        <div class="sub-card"><div class="label">지급완료</div><div class="value">${fmt(ct['지급완료'])}</div></div>
+        <div class="sub-card danger"><div class="label">작성필요</div><div class="value">${fmt(ct['작성필요'])}</div></div>
+      </div>
+    </div>
+  `;
+  document.getElementById('mkt-overview-totals').innerHTML = totalsHtml;
+
+  // Table
+  const offices = DATA.mkt_tool.office_summary;
+  let thead = `
+    <thead>
+      <tr>
+        <th rowspan="2" class="center">사무소명</th>
+        <th colspan="4" class="center group-jamun-bg">자문</th>
+        <th colspan="4" class="center group-jeungrye-bg">증례</th>
+      </tr>
+      <tr>
+        <th class="center group-jamun-bg">신청</th>
+        <th class="center group-jamun-bg">작성완료</th>
+        <th class="center group-jamun-bg">지급완료</th>
+        <th class="center group-jamun-bg">작성필요</th>
+        <th class="center group-jeungrye-bg">신청</th>
+        <th class="center group-jeungrye-bg">작성완료</th>
+        <th class="center group-jeungrye-bg">지급완료</th>
+        <th class="center group-jeungrye-bg">작성필요</th>
+      </tr>
+    </thead>
+  `;
+  let tbody = '<tbody>';
+  offices.forEach(o => {
+    tbody += `<tr class="clickable" data-office="${o.office}">
       <td class="center">${o.office}</td>
       <td class="center">${fmt(o.jamun['신청'])}</td>
       <td class="center">${fmt(o.jamun['작성완료'])}</td>
       <td class="center">${fmt(o.jamun['지급완료'])}</td>
-      <td class="center" style="color:${o.jamun['작성필요']>0?'var(--danger)':'inherit'};font-weight:${o.jamun['작성필요']>0?'700':'600'}">${fmt(o.jamun['작성필요'])}</td>
-      <td class="center">${fmt(o.jeungrye['신청'])}</td>
-      <td class="center">${fmt(o.jeungrye['작성완료'])}</td>
-      <td class="center">${fmt(o.jeungrye['지급완료'])}</td>
-      <td class="center" style="color:${o.jeungrye['작성필요']>0?'var(--danger)':'inherit'};font-weight:${o.jeungrye['작성필요']>0?'700':'600'}">${fmt(o.jeungrye['작성필요'])}</td>
-    </tr>`).join('');
-
-  return `
-  ${banner('서울3 mkt tool 현황판')}
-  <div class="group-grid">
-    ${groupCard('자문 합계', s['자문'])}
-    ${groupCard('증례 합계', s['증례'])}
-  </div>
-  <h3 class="section-title">사무소별 현황 <span class="section-count">(행 클릭 시 세부 이동)</span></h3>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="center" rowspan="2">사무소명</th>
-          <th class="center group-jamun-bg" colspan="4">자문</th>
-          <th class="center group-jeungrye-bg" colspan="4">증례</th>
-        </tr>
-        <tr>
-          <th class="center group-jamun-bg">신청</th>
-          <th class="center group-jamun-bg">작성완료</th>
-          <th class="center group-jamun-bg">지급완료</th>
-          <th class="center group-jamun-bg">작성필요</th>
-          <th class="center group-jeungrye-bg">신청</th>
-          <th class="center group-jeungrye-bg">작성완료</th>
-          <th class="center group-jeungrye-bg">지급완료</th>
-          <th class="center group-jeungrye-bg">작성필요</th>
-        </tr>
-      </thead>
-      <tbody>${rows}</tbody>
-    </table>
-  </div>`;
-}
-
-// 요약은 사무소+담당자 기준으로만 계산 (상태 필터의 영향 X)
-function calcOfficeSummary(officeName, managerFilter) {
-  const info = DATA.mktTool.officeData[officeName];
-  if (!info) return {jamun:{신청:0,작성완료:0,지급완료:0,작성필요:0}, jeungrye:{신청:0,작성완료:0,지급완료:0,작성필요:0}};
-  const rows = info.rows.filter(r => managerFilter === '전체' || r.manager === managerFilter);
-  const init = () => ({신청:0,작성완료:0,지급완료:0,작성필요:0});
-  const sum = {자문: init(), 증례: init()};
-  for (const r of rows) {
-    sum[r.kind]['신청']++;
-    if (r.status === '작성완료' || r.status === '지급완료') sum[r.kind]['작성완료']++;
-    if (r.status === '지급완료') sum[r.kind]['지급완료']++;
-    if (r.status === '작성필요') sum[r.kind]['작성필요']++;
-  }
-  return {jamun: sum['자문'], jeungrye: sum['증례']};
-}
-
-function renderMktDetail() {
-  const offices = DATA.mktTool.offices;
-  if (!state.selectedOffice) state.selectedOffice = offices[0];
-  const cur = state.selectedOffice;
-  const info = DATA.mktTool.officeData[cur];
-  const managers = ['전체', ...info.managers];
-  if (!managers.includes(state.selectedManager)) state.selectedManager = '전체';
-  if (!STATUS_OPTIONS.includes(state.selectedStatus)) state.selectedStatus = '전체';
-
-  const tabs = offices.map(o => `<div class="office-tab ${o===cur?'active':''}" data-office-tab="${o}">${o}</div>`).join('');
-  const chips = managers.map(m => `<div class="chip ${m===state.selectedManager?'active':''}" data-manager="${m}">${m}</div>`).join('');
-  const statusChips = STATUS_OPTIONS.map(s => {
-    const variant = STATUS_CHIP_CLASS[s] || '';
-    const active = s === state.selectedStatus ? 'active' : '';
-    return `<div class="chip ${variant} ${active}" data-status="${s}">${s}</div>`;
-  }).join('');
-
-  // 요약: 상태 필터 영향 X
-  const sum = calcOfficeSummary(cur, state.selectedManager);
-  const subCard = (label, val, variant) => `<div class="sub-card ${variant||''}"><div class="label">${label}</div><div class="value">${fmt(val)}</div></div>`;
-  const groupCard = (title, m) => `
-    <div class="group-card">
-      <h3>${title}</h3>
-      <div class="sub-grid">
-        ${subCard('신청', m['신청'], 'accent')}
-        ${subCard('작성완료', m['작성완료'])}
-        ${subCard('지급완료', m['지급완료'])}
-        ${subCard('작성필요', m['작성필요'], 'danger')}
-      </div>
-    </div>`;
-
-  // 거래처 리스트: 담당자 + 상태 AND 필터
-  const filtered = info.rows
-    .filter(r => state.selectedManager === '전체' || r.manager === state.selectedManager)
-    .filter(r => state.selectedStatus === '전체' || r.status === state.selectedStatus);
-  filtered.sort((a,b) => a.manager.localeCompare(b.manager,'ko') || a.hospital.localeCompare(b.hospital,'ko'));
-  const statusPill = (s) => {
-    if (s === '지급완료') return '<span class="pill pill-paid">지급완료</span>';
-    if (s === '작성완료') return '<span class="pill pill-written">작성완료</span>';
-    return '<span class="pill pill-need">작성필요</span>';
-  };
-  const kindPill = (k) => k === '자문' ? '<span class="pill pill-jamun">자문</span>' : '<span class="pill pill-jeungrye">증례</span>';
-  const rows = filtered.map(r => `
-    <tr>
-      <td>${r.manager||'-'}</td>
-      <td>${r.hospital||'-'}</td>
-      <td>${r.doctor||'-'}</td>
-      <td>${kindPill(r.kind)}</td>
-      <td>${statusPill(r.status)}</td>
-      <td>${r.payDate||'-'}</td>
-    </tr>`).join('');
-
-  const subtitleParts = [cur, state.selectedManager];
-  if (state.selectedStatus !== '전체') subtitleParts.push(state.selectedStatus);
-  const subtitle = subtitleParts.join(' · ');
-
-  return `
-  ${banner('사무소 세부현황', subtitle)}
-  <div class="office-tabs">${tabs}</div>
-  <div class="group-grid">
-    ${groupCard('자문', sum.jamun)}
-    ${groupCard('증례', sum.jeungrye)}
-  </div>
-  <h3 class="section-title">담당자 필터</h3>
-  <div class="manager-filter"><span class="filter-label">담당자</span>${chips}</div>
-  <div class="status-filter"><span class="filter-label">상태</span>${statusChips}</div>
-  <h3 class="section-title">거래처 리스트 <span class="section-count">(${filtered.length}건${state.selectedStatus!=='전체'?` · ${state.selectedStatus} 필터 적용`:''})</span></h3>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>담당자</th>
-          <th>거래처명</th>
-          <th>고객명</th>
-          <th>구분</th>
-          <th>상태</th>
-          <th>지급일</th>
-        </tr>
-      </thead>
-      <tbody>${rows||'<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:30px">조건에 해당하는 데이터가 없습니다</td></tr>'}</tbody>
-    </table>
-  </div>`;
-}
-
-function renderProOverview() {
-  const d = DATA.proStatus.divisionSummary;
-  const kpi = `
-    <div class="kpi-grid">
-      <div class="kpi-card"><div class="label">총 기관수</div><div class="value-row"><span class="value">${fmt(d['총기관수'])}</span><span class="unit">처</span></div></div>
-      <div class="kpi-card"><div class="label">총 목표례수</div><div class="value-row"><span class="value">${fmt(d['총목표'])}</span><span class="unit">례</span></div></div>
-      <div class="kpi-card accent"><div class="label">총 등록례수</div><div class="value-row"><span class="value">${fmt(d['총등록'])}</span><span class="unit">례</span></div></div>
-      <div class="kpi-card accent"><div class="label">전체 등록률</div><div class="value-row"><span class="value">${pct(d['전체등록률'])}</span></div></div>
-      <div class="kpi-card danger"><div class="label">등록률 0% 기관수</div><div class="value-row"><span class="value">${fmt(d['영기관수'])}</span><span class="unit">처</span></div></div>
-    </div>`;
-
-  const officeRows = DATA.proStatus.officeSummary.map(o => `
-    <tr>
-      <td>${o.office}</td>
-      <td class="num">${fmt(o.count)}처</td>
-      <td class="num">${fmt(o.goal)}례</td>
-      <td class="num">${fmt(o.reg)}례</td>
-      <td class="num" style="color:${o.rate===0?'var(--danger)':'inherit'};font-weight:${o.rate===0?'800':'600'}">${pct(o.rate)}</td>
-      <td class="num" style="color:${o.zeroCount>0?'var(--danger)':'inherit'};font-weight:${o.zeroCount>0?'700':'600'}">${fmt(o.zeroCount)}처</td>
-    </tr>`).join('');
-
-  const instRows = DATA.proStatus.institutionList.map(i => {
-    const zero = i['등록률'] === 0;
-    return `
-    <tr class="${zero?'zero-row':''}">
-      <td>${i['사업자번호']||'-'}</td>
-      <td>${i['사업부']}</td>
-      <td>${i['사무소']}</td>
-      <td>${i['담당자']}</td>
-      <td class="${zero?'danger-cell':''}">${i['기관명']}</td>
-      <td>${i['연구자명']||'-'}</td>
-      <td class="num">${fmt(i['목표'])}</td>
-      <td class="num">${fmt(i['등록'])}</td>
-      <td class="num ${zero?'danger-cell':''}">${pct(i['등록률'])}</td>
+      <td class="center" style="color:${o.jamun['작성필요']>0?'var(--danger)':'inherit'};font-weight:${o.jamun['작성필요']>0?700:600}">${fmt(o.jamun['작성필요'])}</td>
+      <td class="center">${fmt(o.case['신청'])}</td>
+      <td class="center">${fmt(o.case['작성완료'])}</td>
+      <td class="center">${fmt(o.case['지급완료'])}</td>
+      <td class="center" style="color:${o.case['작성필요']>0?'var(--danger)':'inherit'};font-weight:${o.case['작성필요']>0?700:600}">${fmt(o.case['작성필요'])}</td>
     </tr>`;
-  }).join('');
+  });
+  tbody += '</tbody>';
+  document.getElementById('mkt-overview-table').innerHTML = thead + tbody;
 
-  return `
-  ${banner('서울3 PRO 현황', '펙수클루PRO V4 (20mg) 관리장 기준')}
-  ${kpi}
-  <h3 class="section-title">사무소별 요약 <span class="section-count">(등록률 높은 순)</span></h3>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>사무소</th>
-          <th class="num">기관수</th>
-          <th class="num">목표 합계</th>
-          <th class="num">등록 합계</th>
-          <th class="num">전체 등록률</th>
-          <th class="num">등록률 0% 기관수</th>
-        </tr>
-      </thead>
-      <tbody>${officeRows}</tbody>
-    </table>
-  </div>
-  <h3 class="section-title">거래처별 현황 <span class="section-count">(${DATA.proStatus.institutionList.length}처 · 0% 기관 상단 표시)</span></h3>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>사업자등록번호</th>
-          <th>사업부</th>
-          <th>사무소</th>
-          <th>담당자</th>
-          <th>기관명</th>
-          <th>연구자명</th>
-          <th class="num">목표</th>
-          <th class="num">등록</th>
-          <th class="num">등록률</th>
-        </tr>
-      </thead>
-      <tbody>${instRows}</tbody>
-    </table>
-  </div>`;
+  // Click handlers
+  document.querySelectorAll('#mkt-overview-table tr.clickable').forEach(tr => {
+    tr.addEventListener('click', () => {
+      state.selectedOffice = tr.dataset.office;
+      state.selectedManager = '전체';
+      state.selectedStatus = '전체';
+      setPage('mkt-detail');
+      renderMktDetail();
+    });
+  });
 }
 
-function render() {
-  document.querySelectorAll('.nav-item').forEach(el => {
-    el.classList.toggle('active', el.dataset.section === state.activeSection);
+// ===== MKT Detail =====
+function renderMktDetail() {
+  const officeList = DATA.mkt_tool.office_summary.map(o => o.office);
+  if (!state.selectedOffice || !officeList.includes(state.selectedOffice)) {
+    state.selectedOffice = officeList[0];
+  }
+  // Tabs
+  let tabsHtml = '';
+  officeList.forEach(o => {
+    tabsHtml += `<div class="office-tab ${o===state.selectedOffice?'active':''}" data-office="${o}">${o}</div>`;
   });
-  const main = document.getElementById('main');
-  if (state.activeSection === 'mkt-overview') main.innerHTML = renderMktOverview();
-  else if (state.activeSection === 'mkt-detail') main.innerHTML = renderMktDetail();
-  else if (state.activeSection === 'pro-overview') main.innerHTML = renderProOverview();
+  document.getElementById('mkt-detail-tabs').innerHTML = tabsHtml;
+  document.querySelectorAll('#mkt-detail-tabs .office-tab').forEach(t => {
+    t.addEventListener('click', () => {
+      state.selectedOffice = t.dataset.office;
+      state.selectedManager = '전체';
+      state.selectedStatus = '전체';
+      renderMktDetail();
+    });
+  });
 
-  if (state.activeSection === 'mkt-overview') {
-    document.querySelectorAll('tr[data-office]').forEach(tr => {
-      tr.addEventListener('click', () => {
-        state.selectedOffice = tr.dataset.office;
-        state.selectedManager = '전체';
-        state.selectedStatus = '전체';
-        state.activeSection = 'mkt-detail';
-        render();
-        window.scrollTo({top:0, behavior:'smooth'});
+  const detail = DATA.mkt_tool.office_details[state.selectedOffice];
+  if (!detail) return;
+
+  // 담당자별 자문/증례 요약 — 필터에 따라 다시 계산
+  const allRows = detail.rows;
+  let filteredByManager = state.selectedManager === '전체'
+    ? allRows
+    : allRows.filter(r => r.manager === state.selectedManager);
+
+  function summary(rows) {
+    const total = rows.length;
+    const written = rows.filter(r => r.status === '작성완료' || r.status === '지급완료').length;
+    const paid = rows.filter(r => r.status === '지급완료').length;
+    const need = total - written;
+    return {'신청':total,'작성완료':written,'지급완료':paid,'작성필요':need};
+  }
+
+  const jamunRows = filteredByManager.filter(r => r.kind === '자문');
+  const caseRows = filteredByManager.filter(r => r.kind === '증례');
+  const js = summary(jamunRows);
+  const cs = summary(caseRows);
+
+  document.getElementById('mkt-detail-totals').innerHTML = `
+    <div class="group-card">
+      <h3>자문</h3>
+      <div class="sub-grid">
+        <div class="sub-card accent"><div class="label">신청</div><div class="value">${fmt(js['신청'])}</div></div>
+        <div class="sub-card"><div class="label">작성완료</div><div class="value">${fmt(js['작성완료'])}</div></div>
+        <div class="sub-card"><div class="label">지급완료</div><div class="value">${fmt(js['지급완료'])}</div></div>
+        <div class="sub-card danger"><div class="label">작성필요</div><div class="value">${fmt(js['작성필요'])}</div></div>
+      </div>
+    </div>
+    <div class="group-card">
+      <h3>증례</h3>
+      <div class="sub-grid">
+        <div class="sub-card accent"><div class="label">신청</div><div class="value">${fmt(cs['신청'])}</div></div>
+        <div class="sub-card"><div class="label">작성완료</div><div class="value">${fmt(cs['작성완료'])}</div></div>
+        <div class="sub-card"><div class="label">지급완료</div><div class="value">${fmt(cs['지급완료'])}</div></div>
+        <div class="sub-card danger"><div class="label">작성필요</div><div class="value">${fmt(cs['작성필요'])}</div></div>
+      </div>
+    </div>
+  `;
+
+  // Manager chips
+  const managers = detail.managers; // ['전체', ...]
+  let mgrHtml = '<span class="filter-label">담당자</span>';
+  managers.forEach(m => {
+    mgrHtml += `<div class="chip ${m===state.selectedManager?'active':''}" data-manager="${m}">${m}</div>`;
+  });
+  document.getElementById('mkt-detail-managers').innerHTML = mgrHtml;
+  document.querySelectorAll('#mkt-detail-managers .chip').forEach(c => {
+    c.addEventListener('click', () => {
+      state.selectedManager = c.dataset.manager;
+      renderMktDetail();
+    });
+  });
+
+  // Status chips
+  const statuses = ['전체', '지급완료', '작성완료', '작성필요'];
+  const statusKlass = {'지급완료':'status-paid','작성완료':'status-written','작성필요':'status-need','전체':''};
+  let stHtml = '<span class="filter-label">상태</span>';
+  statuses.forEach(s => {
+    const klass = statusKlass[s] || '';
+    stHtml += `<div class="chip ${klass} ${s===state.selectedStatus?'active':''}" data-status="${s}">${s}</div>`;
+  });
+  document.getElementById('mkt-detail-statuses').innerHTML = stHtml;
+  document.querySelectorAll('#mkt-detail-statuses .chip').forEach(c => {
+    c.addEventListener('click', () => {
+      state.selectedStatus = c.dataset.status;
+      renderMktDetail();
+    });
+  });
+
+  // 거래처 리스트 (담당자 + 상태 필터)
+  let rows = filteredByManager;
+  if (state.selectedStatus !== '전체') {
+    rows = rows.filter(r => r.status === state.selectedStatus);
+  }
+  // 담당자별 그룹
+  const byManager = {};
+  rows.forEach(r => {
+    if (!byManager[r.manager]) byManager[r.manager] = [];
+    byManager[r.manager].push(r);
+  });
+  const sortedMgrs = Object.keys(byManager).sort();
+
+  // Subtitle
+  let sub = `${state.selectedOffice} · ${state.selectedManager}`;
+  if (state.selectedStatus !== '전체') sub += ` · ${state.selectedStatus}`;
+  document.getElementById('mkt-detail-sub').textContent = sub;
+  document.getElementById('mkt-detail-count').textContent = `(${rows.length}건)`;
+
+  // Build table — 담당자 그룹 헤더 + 행
+  let thead = `<thead><tr>
+    <th>담당자</th>
+    <th>거래처명</th>
+    <th>고객명</th>
+    <th>구분</th>
+    <th>상태</th>
+    <th>지급일</th>
+  </tr></thead>`;
+  let tbody = '<tbody>';
+  if (rows.length === 0) {
+    tbody += `<tr class="muted-row"><td colspan="6" style="text-align:center; padding:30px">표시할 데이터가 없습니다.</td></tr>`;
+  } else {
+    sortedMgrs.forEach(m => {
+      const items = byManager[m].slice().sort((a,b) => {
+        if (a.kind !== b.kind) return a.kind === '자문' ? -1 : 1;
+        return (a.hospital||'').localeCompare(b.hospital||'');
+      });
+      items.forEach((r, i) => {
+        const statusPill = r.status === '지급완료' ? 'pill-paid' :
+                           r.status === '작성완료' ? 'pill-written' : 'pill-need';
+        const kindPill = r.kind === '자문' ? 'pill-jamun' : 'pill-jeungrye';
+        tbody += `<tr>
+          <td>${i === 0 ? `<strong>${escapeHtml(m)}</strong>` : ''}</td>
+          <td>${escapeHtml(r.hospital)}</td>
+          <td>${escapeHtml(r.doctor)}</td>
+          <td><span class="pill ${kindPill}">${r.kind}</span></td>
+          <td><span class="pill ${statusPill}">${r.status}</span></td>
+          <td>${r.paid_date || ''}</td>
+        </tr>`;
       });
     });
   }
-  if (state.activeSection === 'mkt-detail') {
-    document.querySelectorAll('[data-office-tab]').forEach(el => {
-      el.addEventListener('click', () => {
-        state.selectedOffice = el.dataset.officeTab;
-        state.selectedManager = '전체';
-        state.selectedStatus = '전체';  // 사무소 변경 시 상태 필터 리셋
-        render();
-      });
-    });
-    document.querySelectorAll('[data-manager]').forEach(el => {
-      el.addEventListener('click', () => {
-        state.selectedManager = el.dataset.manager;
-        // 담당자 변경 시 상태 필터는 유지
-        render();
-      });
-    });
-    document.querySelectorAll('[data-status]').forEach(el => {
-      el.addEventListener('click', () => {
-        state.selectedStatus = el.dataset.status;
-        render();
-      });
-    });
-  }
+  tbody += '</tbody>';
+  document.getElementById('mkt-detail-table').innerHTML = thead + tbody;
 }
 
-document.querySelectorAll('.nav-item').forEach(el => {
-  el.addEventListener('click', () => {
-    state.activeSection = el.dataset.section;
-    render();
-    window.scrollTo({top:0, behavior:'smooth'});
-  });
-});
+function escapeHtml(s) {
+  if (s == null) return '';
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
 
-render();
+// ===== PRO =====
+function renderPro() {
+  const s = DATA.pro.summary;
+  const kpiHtml = `
+    <div class="kpi-card"><div class="label">총 기관수</div><div class="value-row"><span class="value">${fmt(s.total_inst)}</span><span class="unit">처</span></div></div>
+    <div class="kpi-card"><div class="label">총 목표례수</div><div class="value-row"><span class="value">${fmt(s.total_target)}</span><span class="unit">례</span></div></div>
+    <div class="kpi-card accent"><div class="label">총 등록례수</div><div class="value-row"><span class="value">${fmt(s.total_reg)}</span><span class="unit">례</span></div></div>
+    <div class="kpi-card accent"><div class="label">전체 등록률</div><div class="value-row"><span class="value">${pct(s.overall_rate)}</span></div></div>
+    <div class="kpi-card danger"><div class="label">등록률 0% 기관수</div><div class="value-row"><span class="value">${fmt(s.zero_count)}</span><span class="unit">처</span></div></div>
+  `;
+  document.getElementById('pro-kpi').innerHTML = kpiHtml;
+
+  // Office table
+  const offices = DATA.pro.office_summary;
+  let thead = `<thead><tr>
+    <th>사무소</th>
+    <th class="num">기관수</th>
+    <th class="num">목표 합계</th>
+    <th class="num">등록 합계</th>
+    <th class="num">전체 등록률</th>
+    <th class="num">등록률 0% 기관수</th>
+  </tr></thead>`;
+  let tbody = '<tbody>';
+  offices.forEach(o => {
+    const zStyle = o.zero > 0 ? 'color:var(--danger); font-weight:700' : '';
+    tbody += `<tr>
+      <td><strong>${escapeHtml(o.office)}</strong></td>
+      <td class="num">${fmt(o.count)}처</td>
+      <td class="num">${fmt(o.target)}례</td>
+      <td class="num">${fmt(o.reg)}례</td>
+      <td class="num">${pct(o.rate)}</td>
+      <td class="num" style="${zStyle}">${fmt(o.zero)}처</td>
+    </tr>`;
+  });
+  tbody += '</tbody>';
+  document.getElementById('pro-office-table').innerHTML = thead + tbody;
+
+  // Institution table
+  const inst = DATA.pro.institutions;
+  document.getElementById('pro-inst-count').textContent = `(${inst.length}건, 등록률 0% ${inst.filter(x=>x.is_zero).length}건)`;
+  let thead2 = `<thead><tr>
+    <th>사업자등록번호</th>
+    <th>사업부</th>
+    <th>사무소</th>
+    <th>담당자</th>
+    <th>기관명</th>
+    <th>연구자명</th>
+    <th class="num">목표</th>
+    <th class="num">등록</th>
+    <th class="num">등록률</th>
+  </tr></thead>`;
+  let tbody2 = '<tbody>';
+  inst.forEach(it => {
+    const zero = it.is_zero;
+    tbody2 += `<tr class="${zero?'zero-row':''}">
+      <td>${escapeHtml(it.biz_no)}</td>
+      <td>서울3</td>
+      <td>${escapeHtml(it.office)}</td>
+      <td>${escapeHtml(it.manager)}</td>
+      <td class="${zero?'danger-cell':''}">${escapeHtml(it.inst_name)}</td>
+      <td>${escapeHtml(it.researcher)}</td>
+      <td class="num">${fmt(it.target)}</td>
+      <td class="num">${fmt(it.reg)}</td>
+      <td class="num ${zero?'danger-cell':''}">${pct(it.rate)}</td>
+    </tr>`;
+  });
+  tbody2 += '</tbody>';
+  document.getElementById('pro-inst-table').innerHTML = thead2 + tbody2;
+}
+
+// init
+renderMktOverview();
+renderMktDetail();
+renderPro();
 </script>
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js/v833ccba57c9e4d2798f2e76cebdd09a11778172276447" integrity="sha512-57MDmcccJXYtNnH+ZiBwzC4jb2rvgVCEokYN+L/nLlmO8rfYT/gIpW2A569iJ/3b+0UEasghjuZH/ma3wIs/EQ==" data-cf-beacon='{"version":"2024.11.0","token":"4edd5f8ec12a48cfa682ab8261b80a79","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
 </body>
